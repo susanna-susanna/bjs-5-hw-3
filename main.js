@@ -13,7 +13,7 @@ function getResult(a, b, c){
     let x = -b / 2 * a;
     return {
       D: D,
-      roots: [x1]
+      roots: [x]
     };
   } else if (D > 0) {
     let x1 = (-b + Math.sqrt(D)) / 2 * a;
@@ -24,49 +24,53 @@ function getResult(a, b, c){
     };
   }
 }
-getResult(25, 0, -4);
+
 
 function showSolutionsMessage(a, b, c) {
-  let result = getResult;
+  let result = getResult(a, b, c);
   console.log(`Вычисляем корни квадратного уравнения ${a}x² + ${b}x + ${c}.`);
   console.log("Значение дискриминанта: " + result.D);
 
-  getResult();
-  if (getResult.D < 0) {
-    return "Уравнение не имеет вещественных корней";
-  } else if (getResult.D == 0) {
+  if (result.D < 0) {
+    return console.log(`Уравнение не имеет вещественных корней`);
+  } else if (result.D == 0) {
     let x = -b / 2 * a;
-    return "Уравнение имеет один корень X₁ = " + x;
-    
-  } else if (getResult.D > 0) {
-    let x1 = (-b + Math.sqrt(D)) / 2 * a;
-    let x2 = (-b - Math.sqrt(D)) / 2 * a;
-    return "Уравнение имеет два корня. X₁ = " + x1 + ", X₂ = " + x2;
+    return console.log(`Уравнение имеет один корень  X₁ = ${x}`);
+  } else if (result.D > 0) {
+    let x1 = (-b + Math.sqrt(result.D)) / 2 * a;
+    let x2 = (-b - Math.sqrt(result.D)) / 2 * a;
+    return console.log(`Уравнение имеет два корня. X₁ = ${x1}, X₂ = ${x2}`);
   }
 }
-showSolutionsMessage(1, 2, 3);
+showSolutionsMessage(25, 0, -4);
 
 
-function getAverageScore( data ) {
-    /*data = {
-lesson1: [1, 2, 3, 4, 5],
-lesson2: [1, 2, 3, 4],
-lesson3: [1, 2, 3]
-};*/
-  function count() {
-    let total = 0;
-    for (var key in data) {
+//TASK 2
+
+function count(data) {
+  let total = 0;
+  for (var key in data) {
     let sum = 0, result = 0;
     for (let i = 0; i < data[key].length; i++) {
-    sum += data[key][i];
-    result = sum / data[key].length;
+      sum += data[key][i];
+      result = sum / data[key].length;
     }
+    console.log(`${key}: ${result}`);
     total += result;
-    console.log( key + ": " + result);
-    }
-    console.log("average: " + total / data.length);
-    count();
-    }
+  }
+  return total;
 }
-  getAverageScore();
-  console.log(getAverageScore({lesson1: [1, 2, 3, 4, 5], lesson2: [1, 2, 3, 4], lesson3: [1, 2, 3]}));
+
+function getAverageScore( data ) {
+  let newResult = count(data);
+  let cnt = 0;
+  for (var key in data) {
+    cnt += 1;
+  }
+  console.log('average: ' + newResult / cnt);
+}
+console.log(getAverageScore({
+  lesson1: [1, 2, 3, 4, 5],
+  lesson2: [1, 2, 3, 4],
+  lesson3: [1, 2, 3]
+  }));
