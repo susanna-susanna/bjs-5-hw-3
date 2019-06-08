@@ -67,7 +67,7 @@ function getAverageScore( data ) {
   for (var key in data) {
     cnt += 1;
   }
-  console.log('average: ' + newResult / cnt);
+  return 'average: ' + newResult / cnt;
 }
 console.log(getAverageScore({
   lesson1: [1, 2, 3, 4, 5],
