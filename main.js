@@ -74,3 +74,56 @@ console.log(getAverageScore({
   lesson2: [1, 2, 3, 4],
   lesson3: [1, 2, 3]
   }));
+
+
+//TASK 3
+function retriveName(secretData) {
+  for (var key in secretData) {
+    if (key === 'aaa') {
+      console.log('firstName: ');
+    } else if (key === 'bbb') {
+      console.log('lastName: ');
+    }
+  }
+}
+function getPersonData( secretData ) {
+  let personDate = retriveName(secretData);
+  for (var key in secretData) {
+    if (secretData[key] === 1) {
+      console.log('Emilio');
+    } else if (secretData[key] === 0) {
+      console.log('Rodrigo');
+    }
+  }
+}
+
+    /*function retriveName(secretData) {
+      for (var key in secretData) {
+      if (key === 'aaa') {
+        return key ='firstName';
+      } else if (key === 'bbb') {
+        return key = 'lastName';
+      }
+
+      
+      }
+    }
+
+      function getPersonData( secretData ) {
+      let personDate = retriveName(secretData);
+      for (var key in secretData) {
+        if (secretData[key] === 1) {
+          secretData[key] = 'Emilio';
+        } else if (secretData[key] === 0) {
+          secretData[key] = 'Rodrigo';
+        }
+       
+        }
+        console.log({personDate: secretData[key]});
+      }
+     */ 
+    
+    getPersonData({
+    aaa: 1,
+    bbb: 0
+    });
